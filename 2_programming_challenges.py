@@ -23,9 +23,37 @@ service_tickets = {
     "Ticket001": {"Customer": "Alice", "Issue": "Login problem", "Status": "open"},
     "Ticket002": {"Customer": "Bob", "Issue": "Payment issue", "Status": "closed"}
 }
-
-guest_selection = input("How can we help with your service ticket(s) today? 1.) Open New Service Ticket, 2.)Update Service Ticket, 3.) Show Current Status of Service Ticket, 4.) Display all service tickets:")
-
-if guest_selection == 1:
-    service_tickets ['Ticket003'] 
+def new_ticket():
+    customer = input('What is the customers name?\n')
+    issue = input('What is the issue?\n')
+    status = input('Is the status open,closed, or pending?\n')
+    service_tickets["Ticket003"] = {
+        'Customer': customer,
+        'Issue': issue,
+        'Status': status
+    }
+    print('New Service Ticket Added!')
     print(service_tickets)
+
+def update_status():
+    print(service_tickets)
+    ticket_choice = input('What ticket status would you like to update?\n')
+    print(ticket_choice)
+    new_status = input(f'What is the new status of ticket {ticket_choice}?')
+    service_tickets[ticket_choice]['Status'] = new_status
+    print('Updated Status!')
+    print(service_tickets)
+
+def view_tickets():
+    print(service_tickets)
+    
+
+guest_selection = int(input("How can we help with your service ticket(s) today? 1.) Open New Service Ticket, 2.)Update Service Ticket Status, 3.) Display all service tickets:"))
+if guest_selection == 1:
+    new_ticket()
+elif guest_selection == 2:
+    update_status()
+elif guest_selection == 3:
+    view_tickets()
+else:
+    print('Invalid Selection!')
